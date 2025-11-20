@@ -89,7 +89,7 @@ Step 1: Install Docker
 Make sure Docker and Docker Compose are installed on your system.
 
 Step 2: Clone the Project
-git clone https://github.com/your-username/web_Hoster.git
+git clone https://github.com/The-Quiet-1/multi-webserver-docker
 cd web_Hoster
 
 Step 3: Start Both Web Servers
