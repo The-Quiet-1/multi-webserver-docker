@@ -83,7 +83,7 @@ services:
       - ./apache:/usr/local/apache2/htdocs/
     restart: always
 
-6. How to Run the Project
+# 6. How to Run the Project
 
 Step 1: Install Docker
 Make sure Docker and Docker Compose are installed on your system.
@@ -103,7 +103,7 @@ Apache	http://localhost:8082
 Step 5: Stop Everything
 docker-compose down
 
-7. Full Commands List
+# 7. Full Commands List
 Docker Commands
 powershell
 Copy code
@@ -121,7 +121,7 @@ docker-compose down
 docker-compose restart
 docker-compose ps
 
-8. Future Improvements (Optional Enhancements)
+# 8. Future Improvements (Optional Enhancements)
 
 Add load balancer (Nginx reverse proxy)
 Enable HTTPS using Certbot
