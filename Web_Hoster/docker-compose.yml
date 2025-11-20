@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+    nginx:
+      image: nginx:latest
+      container_name: nginx_web
+      ports:
+        - "8080:80"
+      volumes:
+        - ./nginx:/usr/share/nginx/html
+      restart: always
+
+    apache:
+      image: httpd:latest
+      container_name: apache_web
+      ports:
+        - "8081:80"
+      volumes:
+        - ./apache:/usr/local/apache2/htdocs/
+      restart: always
+
+
