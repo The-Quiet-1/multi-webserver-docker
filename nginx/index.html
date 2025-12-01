@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer - Simple Wikipedia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #202122;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #a2a9b1;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #36c;
+        }
+
+        .logo span {
+            font-weight: normal;
+            font-size: 1.2rem;
+        }
+
+        .search-box {
+            display: flex;
+        }
+
+        .search-box input {
+            padding: 8px 12px;
+            border: 1px solid #a2a9b1;
+            border-right: none;
+            border-radius: 2px 0 0 2px;
+            width: 300px;
+        }
+
+        .search-box button {
+            background: #36c;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 0 2px 2px 0;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            margin-top: 20px;
+            gap: 20px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            flex: 0 0 220px;
+            background: #f8f9fa;
+            border: 1px solid #a2a9b1;
+            border-radius: 2px;
+            padding: 10px;
+        }
+
+        .sidebar h3 {
+            background: #eaecf0;
+            padding: 6px 12px;
+            margin: 0 -10px 10px;
+            font-size: 1rem;
+            font-weight: normal;
+            border-bottom: 1px solid #a2a9b1;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar a {
+            color: #36c;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Article */
+        .article {
+            flex: 1;
+            background: white;
+            border: 1px solid #a2a9b1;
+            border-radius: 2px;
+            padding: 20px;
+        }
+
+        .article-header {
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .article-header h1 {
+            font-size: 1.9rem;
+            font-weight: normal;
+            margin-bottom: 5px;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            border: 1px solid #a2a9b1;
+            padding: 10px;
+            margin: 20px 0;
+            width: 50%;
+            float: right;
+            margin-left: 20px;
+        }
+
+        .toc h2 {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .toc ul {
+            list-style: none;
+        }
+
+        .toc li {
+            margin-bottom: 5px;
+        }
+
+        .toc a {
+            color: #36c;
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        .article-section {
+            margin-bottom: 30px;
+        }
+
+        .article-section h2 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        .article-section h3 {
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin: 15px 0 10px;
+        }
+
+        .article-section p {
+            margin-bottom: 15px;
+        }
+
+        .article-section ul, .article-section ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .infobox {
+            border: 1px solid #a2a9b1;
+            background: #f8f9fa;
+            padding: 10px;
+            width: 250px;
+            float: right;
+            margin-left: 20px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .infobox-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .infobox-image {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .infobox-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .infobox table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .infobox th, .infobox td {
+            padding: 5px;
+            vertical-align: top;
+            border-bottom: 1px solid #a2a9b1;
+        }
+
+        .infobox th {
+            text-align: left;
+            width: 40%;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #a2a9b1;
+        }
+
+        .image-caption {
+            font-size: 0.9rem;
+            color: #54595d;
+            margin-top: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background: #fff;
+            border-top: 1px solid #a2a9b1;
+            margin-top: 30px;
+            padding: 20px 0;
+            font-size: 0.9rem;
+            color: #54595d;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-links a {
+            color: #36c;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                flex: none;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .toc {
+                width: 100%;
+                float: none;
+                margin-left: 0;
+            }
+
+            .infobox {
+                width: 100%;
+                float: none;
+                margin-left: 0;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .search-box input {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">Wikipedia<span>The Free Encyclopedia</span></div>
+            <div class="search-box">
+                <input type="text" placeholder="Search Wikipedia">
+                <button>Search</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <aside class="sidebar">
+            <h3>Contents</h3>
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#history">History</a></li>
+                <li><a href="#types">Types of Computers</a></li>
+                <li><a href="#hardware">Hardware</a></li>
+                <li><a href="#software">Software</a></li>
+                <li><a href="#uses">Uses of Computers</a></li>
+                <li><a href="#future">Future of Computing</a></li>
+            </ul>
+        </aside>
+
+        <main class="article">
+            <div class="article-header">
+                <h1>Computer</h1>
+                <p>From Wikipedia, the free encyclopedia</p>
+            </div>
+
+            <div class="toc">
+                <h2>Contents</h2>
+                <ul>
+                    <li><a href="#introduction">1 Introduction</a></li>
+                    <li><a href="#history">2 History</a></li>
+                    <li><a href="#types">3 Types of Computers</a></li>
+                    <li><a href="#hardware">4 Hardware</a></li>
+                    <li><a href="#software">5 Software</a></li>
+                    <li><a href="#uses">6 Uses of Computers</a></li>
+                    <li><a href="#future">7 Future of Computing</a></li>
+                </ul>
+            </div>
+
+            <div class="infobox">
+                <div class="infobox-title">Computer</div>
+                <div class="infobox-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Desktop_computer_clipart_-_Yellow_theme.svg/640px-Desktop_computer_clipart_-_Yellow_theme.svg.png" alt="Computer">
+                </div>
+                <table>
+                    <tr>
+                        <th>Invented</th>
+                        <td>Charles Babbage (1822)</td>
+                    </tr>
+                    <tr>
+                        <th>Related items</th>
+                        <td>Personal computer, laptop, smartphone</td>
+                    </tr>
+                    <tr>
+                        <th>Uses</th>
+                        <td>Data processing, communication, entertainment</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="article-section" id="introduction">
+                <h2>Introduction</h2>
+                <p>A computer is a machine that can be programmed to carry out sequences of arithmetic or logical operations automatically. Modern computers can perform generic sets of operations known as programs. These programs enable computers to perform a wide range of tasks.</p>
+                <p>Computers are used as control systems for a wide variety of industrial and consumer devices. This includes simple special purpose devices like microwave ovens and remote controls, factory devices such as industrial robots, and also general purpose devices like personal computers and mobile devices such as smartphones.</p>
+            </div>
+
+            <div class="article-section" id="history">
+                <h2>History</h2>
+                <p>The first computers were used primarily for numerical calculations. However, as any information can be numerically encoded, people soon realized that computers are capable of general-purpose information processing. Their capacity to handle large amounts of data has extended the range and accuracy of weather forecasting.</p>
+
+                <h3>Early Computers</h3>
+                <p>Early in the Industrial Revolution, some mechanical devices were used for calculations. Simple manual instruments like the abacus have aided people in doing calculations since ancient times.</p>
+
+                <h3>Modern Computers</h3>
+                <p>Modern computers are electronic and digital. They use transistors and integrated circuits to process information at high speeds.</p>
+            </div>
+
+            <div class="article-section" id="types">
+                <h2>Types of Computers</h2>
+                <p>Computers can be classified in several ways, including by size, functionality, and application.</p>
+
+                <h3>By Size</h3>
+                <ul>
+                    <li><strong>Supercomputers:</strong> The most powerful computers used for complex calculations and simulations for critical applications</li>
+                    <li><strong>Mainframe computers:</strong> Large computers used by organizations for bulk data processing</li>
+                    <li><strong>Minicomputers:</strong> Mid-sized computers used in small businesses or departments</li>
+                    <li><strong>Microcomputers:</strong> Personal computers like desktops and laptops</li>
+                </ul>
+
+                <h3>By Functionality</h3>
+                <ul>
+                    <li><strong>Analog computers:</strong> Use continuous physical phenomena to model problems</li>
+                    <li><strong>Digital computers:</strong> Process information in discrete form (binary)</li>
+                    <li><strong>Hybrid computers:</strong> Combine features of analog and digital computers</li>
+                </ul>
+            </div>
+
+            <div class="article-section" id="hardware">
+                <h2>Hardware</h2>
+                <p>Computer hardware includes the physical parts of a computer, such as the monitor, keyboard, computer data storage, graphics card, sound card, and motherboard.</p>
+
+                <h3>Central Processing Unit (CPU)</h3>
+                <p>The CPU is the brain of the computer, responsible for executing instructions.</p>
+
+                <h3>Memory</h3>
+                <p>Computers have two main types of memory:</p>
+                <ul>
+                    <li><strong>RAM (Random Access Memory):</strong> Temporary memory that stores data while the computer is running</li>
+                    <li><strong>ROM (Read Only Memory):</strong> Permanent memory that stores essential instructions</li>
+                </ul>
+
+                <h3>Storage Devices</h3>
+                <p>Storage devices save data even when the computer is turned off. Common storage devices include:</p>
+                <ul>
+                    <li>Hard disk drives (HDD)</li>
+                    <li>Solid-state drives (SSD)</li>
+                    <li>USB flash drives</li>
+                    <li>Optical discs (CD, DVD, Blu-ray)</li>
+                </ul>
+            </div>
+
+            <div class="article-section" id="software">
+                <h2>Software</h2>
+                <p>Software is a collection of instructions that tell a computer how to work. This is in contrast to physical hardware, from which the system is built.</p>
+
+                <h3>System Software</h3>
+                <p>System software manages the computer's resources and provides a platform for application software. Examples include operating systems like Windows, macOS, Linux, Android, and iOS.</p>
+
+                <h3>Application Software</h3>
+                <p>Application software performs specific tasks for users. Examples include:</p>
+                <ul>
+                    <li>Word processors (Microsoft Word, Google Docs)</li>
+                    <li>Web browsers (Chrome, Firefox, Safari)</li>
+                    <li>Media players (VLC, Windows Media Player)</li>
+                    <li>Games and educational software</li>
+                </ul> ⬤

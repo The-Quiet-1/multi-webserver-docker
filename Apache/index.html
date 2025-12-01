@@ -1,0 +1,482 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Sunny Kumar - Dedicated B.Ed Teacher with 6+ years of experience. Explore my teaching philosophy, skills, experience, and portfolio."/>
+    <meta name="keywords" content="B.Ed Teacher, Sunny Kumar, Education, Teaching Portfolio, Mathematics, Science, English"/>
+    <meta name="author" content="Sunny Kumar"/>
+    <title>Sunny Kumar - B.Ed Teacher Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <style>
+        :root { --primary: #2c5530; --secondary: #4a7c59; --accent: #e6a400; --light: #f8f9fa; --dark: #2c3e50; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: #f9f9f9; color: #333; line-height: 1.6; overflow-x: hidden; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+
+        /* Preloader */
+        .preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--primary); display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.5s ease; }
+        .preloader.hidden { opacity: 0; pointer-events: none; }
+        .spinner { width: 60px; height: 60px; border: 4px solid rgba(255,255,255,0.3); border-top: 4px solid var(--accent); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Header */
+        header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: all 0.3s ease; }
+        header.scrolled { padding: 0.5rem 0; background: rgba(44,85,48,0.95); }
+        .header-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.6rem; font-weight: 700; display: flex; align-items: center; transition: transform 0.3s ease; }
+        .logo i { margin-right: 10px; color: var(--accent); }
+        .nav-links { display: flex; list-style: none; transition: all 0.3s ease; }
+        .nav-links li { margin-left: 2rem; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: all 0.3s ease; position: relative; padding: 0.5rem 0; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: var(--accent); transition: width 0.3s ease; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .mobile-menu { display: none; font-size: 1.5rem; cursor: pointer; transition: transform 0.3s ease; color: white; }
+
+        /* Hero */
+        .hero { background: linear-gradient(rgba(44,85,48,0.8), rgba(74,124,89,0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'); background-size: cover; background-position: center; height: 100vh; display: flex; align-items: center; color: white; text-align: center; padding-top: 60px; position: relative; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.25); z-index: 1; }
+        .hero-content { max-width: 900px; margin: 0 auto; position: relative; z-index: 2; animation: fadeInUp 1s ease; padding: 2rem; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .hero h1 { font-size: 3.2rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1.25rem; margin-bottom: 1.5rem; opacity: 0.95; }
+        .btn { display: inline-block; background-color: var(--accent); color: white; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); position: relative; overflow: hidden; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+
+        /* Sections */
+        section { padding: 80px 0; }
+        .section-title { text-align: center; margin-bottom: 50px; position: relative; }
+        .section-title h2 { font-size: 2.2rem; color: var(--primary); display: inline-block; position: relative; margin-bottom: 10px; }
+        .section-title h2::after { content: ''; position: absolute; width: 70px; height: 4px; background: linear-gradient(90deg, var(--accent), var(--secondary)); bottom: -10px; left: 50%; transform: translateX(-50%); border-radius: 2px; }
+        .section-title p { color: #666; font-size: 1.05rem; max-width: 700px; margin: 0 auto; }
+
+        /* About */
+        .about-content { display: flex; align-items: center; gap: 40px; }
+        .about-img { flex: 1; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; }
+        .about-img img { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
+        .about-text { flex: 1; }
+        .about-text h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--primary); }
+        .about-text p { margin-bottom: 15px; color: #555; }
+
+        /* Stats */
+        .stats { display: flex; justify-content: space-between; margin-top: 20px; flex-wrap: wrap; gap: 15px; }
+        .stat-item { text-align: center; padding: 18px; background: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease; flex: 1; min-width: 150px; }
+        .stat-number { font-size: 2rem; font-weight: 700; color: var(--secondary); display: block; margin-bottom: 5px; }
+        .stat-text { font-size: 0.95rem; color: #777; }
+
+        /* Philosophy */
+        .philosophy { background: linear-gradient(135deg, var(--light) 0%, #e9ecef 100%); }
+        .quote { font-size: 1.15rem; color: var(--primary); margin: 20px auto; padding: 20px; border-left: 5px solid var(--accent); background-color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.05); max-width: 900px; }
+
+        /* Skills */
+        .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .skill-category { background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); position: relative; overflow: hidden; }
+        .skill-category h3 { font-size: 1.2rem; margin-bottom: 12px; color: var(--primary); display: flex; align-items: center; }
+        .skill-item { margin-bottom: 12px; }
+        .skill-name { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.95rem; }
+        .skill-bar { height: 10px; background-color: #e0e0e0; border-radius: 5px; overflow: hidden; position: relative; }
+        .skill-level { height: 100%; background: linear-gradient(90deg, var(--secondary), var(--accent)); border-radius: 5px; width: 0; transition: width 1s ease; }
+
+        /* Timeline */
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; padding: 20px 0; }
+        .timeline::after { content: ''; position: absolute; width: 6px; background: linear-gradient(to bottom, var(--secondary), var(--accent)); top: 0; bottom: 0; left: 50%; margin-left: -3px; border-radius: 3px; }
+        .timeline-item { padding: 10px 40px; position: relative; width: 50%; box-sizing: border-box; }
+        .timeline-item:nth-child(odd) { left: 0; }
+        .timeline-item:nth-child(even) { left: 50%; }
+        .timeline-content { padding: 15px; background-color: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); position: relative; }
+        .timeline-content h3 { margin-bottom: 6px; color: var(--primary); font-size: 1.05rem; }
+        .timeline-content .date { color: var(--secondary); font-weight: 600; margin-bottom: 10px; display: block; }
+        .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; background: linear-gradient(45deg, var(--secondary), var(--accent)); top: 20px; border-radius: 50%; z-index: 1; border: 4px solid white; }
+        .timeline-item:nth-child(odd)::after { right: -10px; }
+        .timeline-item:nth-child(even)::after { left: -10px; }
+
+        /* Testimonials */
+        .testimonials-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        .testimonial-item { background: white; padding: 18px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+        /* Contact */
+        .contact { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; }
+        .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .contact-info i { margin-right: 8px; color: var(--accent); }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 12px; margin-bottom: 12px; border: none; border-radius: 6px; background: rgba(255,255,255,0.12); color: white; }
+        .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.8); }
+        .contact-form button { background: var(--accent); color: white; padding: 10px 18px; border: none; border-radius: 6px; cursor: pointer; }
+
+        /* Footer */
+        footer { background: var(--dark); color: white; text-align: center; padding: 18px 0; }
+        footer .social-links a { color: white; margin: 0 8px; font-size: 1.25rem; transition: color 0.3s ease; }
+        footer .social-links a:hover { color: var(--accent); }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content { flex-direction: column; }
+            .nav-links li { margin-left: 1rem; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu { display: block; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .timeline-item { width: 100%; left: 0 !important; padding-left: 30px; padding-right: 30px; margin-bottom: 20px; }
+            .timeline::after { left: 20px; }
+            .timeline-item::after { left: 8px !important; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="spinner" aria-hidden="true"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="siteHeader">
+        <div class="container header-container">
+            <div class="logo"><i class="fas fa-chalkboard-teacher"></i> Sunny Kumar</div>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#philosophy">Philosophy</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div id="mobileMenuBtn" class="mobile-menu" aria-label="Toggle menu"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-content container">
+            <h1>Sunny Kumar — B.Ed Teacher</h1>
+            <p>Over 6 years of experience shaping young minds in Mathematics, Science & English. Passionate about student-centric learning and building confidence.</p>
+            <div>
+                <a href="#contact" class="btn">Hire Me</a>
+                <a href="#skills" class="btn" style="background:transparent; border:2px solid rgba(255,255,255,0.25); margin-left:12px;">View Skills</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Experienced B.Ed teacher focused on holistic student development, interactive classrooms and evidence-based teaching strategies.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Sunny Kumar teaching"/>
+                </div>
+                <div class="about-text">
+                    <h3>Hi — I'm Sunny</h3>
+                    <p>I specialise in making difficult topics simple. I design lesson plans that encourage curiosity, problem solving and collaborative learning. My classroom uses formative assessment and differentiated instruction to reach every learner.</p>
+                    <div class="stats" aria-hidden="false">
+                        <div class="stat-item">
+                            <span class="stat-number">6+</span>
+                            <span class="stat-text">Years Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1500+</span>
+                            <span class="stat-text">Students Taught</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">95%</span>
+                            <span class="stat-text">Student Success Rate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy -->
+    <section id="philosophy" class="philosophy">
+        <div class="container">
+            <div class="section-title">
+                <h2>Teaching Philosophy</h2>
+                <p>Learning should be joyful, relevant and empowering. I combine conceptual clarity with real-world examples and continuous feedback.</p>
+            </div>
+            <div class="philosophy-content">
+                <p class="quote">"Every child can learn, and my job is to find the door that opens learning for each one."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Skills & Expertise</h2>
+                <p>Subject knowledge, pedagogy, technology integration and classroom management.</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="fas fa-book"></i> Subject Mastery</h3>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>Mathematics</span><span>95%</span></div>
+                        <div class="skill-bar"><div class="skill-level" data-level="95"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>Science</span><span>90%</span></div>
+                        <div class="skill-bar"><div class="skill-level" data-level="90"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>English</span><span>88%</span></div>
+                        <div class="skill-bar"><div class="skill-level" data-level="88"></div></div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-chalkboard"></i> Teaching & Pedagogy</h3>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>Lesson Planning</span><span>92%</span></div>
+                        <div class="skill-bar"><div class="skill-level" data-level="92"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>Assessment</span><span>89%</span></div>
+                        <div class="skill-bar"><div class="skill-level" data-level="89"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>Classroom Management</span><span>93%</span></div>
+                        <div class="skill-bar"><div class="skill-level" data-level="93"></div></div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop"></i> Tech & Tools</h3>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>Google Classroom</span><span>85%</span></div>
+                        <div class="skill-bar"><div class="skill-level" data-level="85"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>MS Office</span><span>88%</span></div>
+                        <div class="skill-bar"><div class="skill-level" data-level="88"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>Interactive Quizzes</span><span>82%</span></div>
+                        <div class="skill-bar"><div class="skill-level" data-level="82"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience / Timeline -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Experience</h2>
+                <p>Professional milestones and roles that shaped my teaching journey.</p>
+            </div>
+            <div class="timeline" aria-hidden="false">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="date">2021 - Present</span>
+                        <h3>Senior Teacher — Greenfield Public School</h3>
+                        <p>Lead classes for grades 8–10, curriculum mapping and mentoring junior teachers.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="date">2018 - 2021</span>
+                        <h3>Classroom Teacher — Sunrise Academy</h3>
+                        <p>Designed interactive modules for Mathematics and Science, improved student outcomes by 20%.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="date">2016 - 2018</span>
+                        <h3>Teaching Intern — Local Primary School</h3>
+                        <p>Classroom support, lesson delivery and small group instruction during teacher training.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Students & Parents Say</h2>
+                <p>Feedback that reflects classroom impact and rapport with learners.</p>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"Sunny makes maths enjoyable. My child's confidence improved every month."</p>
+                    <div class="testimonial-author">— Ramesh (Parent)</div>
+                </div>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"Engaging lessons and clear explanations. Highly recommended."</p>
+                    <div class="testimonial-author">— Priya (Student)</div>
+                </div>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"Professional and patient. Great mentor for young learners."</p>
+                    <div class="testimonial-author">— Neha (Parent)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title" style="color:white;">
+                <h2 style="color:white;">Contact</h2>
+                <p style="color:rgba(255,255,255,0.9);">Reach out for tutoring, workshops or collaboration.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in touch</h3>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> sunny.kumar@example.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Patna, Bihar, India</p>
+                    <p style="margin-top:10px; max-width:420px; color:rgba(255,255,255,0.95);">Available for online and in-person sessions. Flexible timings for weekend and after-school coaching.</p>
+                </div>
+                <div class="contact-form" aria-label="Contact form">
+                    <form id="contactForm" onsubmit="return handleContactSubmit(event);">
+                        <input type="text" id="name" placeholder="Your name" required />
+                        <input type="email" id="email" placeholder="Your email" required />
+                        <input type="text" id="subject" placeholder="Subject" />
+                        <textarea id="message" rows="5" placeholder="Message" required></textarea>
+                        <button type="submit">Send Message</button>
+                        <p id="formStatus" style="margin-top:10px; color:#fff; display:none;"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Sunny Kumar — B.Ed Teacher. All rights reserved.</p>
+            <div class="social-links" style="margin-top:8px;">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // DOM shortcuts
+        const preloader = document.getElementById('preloader');
+        const header = document.getElementById('siteHeader');
+        const navLinks = document.getElementById('navLinks');
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const yearEl = document.getElementById('year');
+
+        // Set current year
+        yearEl.textContent = new Date().getFullYear();
+
+        // Preloader hide
+        window.addEventListener('load', () => {
+            setTimeout(() => preloader.classList.add('hidden'), 500);
+            animateSkillBars();
+        });
+
+        // Mobile menu toggle
+        mobileBtn.addEventListener('click', () => {
+            if(navLinks.style.display === 'flex' || navLinks.classList.contains('active')) {
+                navLinks.style.display = 'none';
+                navLinks.classList.remove('active');
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.classList.add('active');
+                navLinks.style.flexDirection = 'column';
+            }
+        });
+
+        // Close mobile menu on link click (for small screens)
+        Array.from(navLinks.querySelectorAll('a')).forEach(link => {
+            link.addEventListener('click', () => {
+                if(window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Header shrink on scroll and active nav link
+        window.addEventListener('scroll', () => {
+            if(window.scrollY > 50) header.classList.add('scrolled'); else header.classList.remove('scrolled');
+            setActiveNav();
+        });
+
+        // Set active nav item based on scroll position
+        function setActiveNav() {
+            const sections = document.querySelectorAll('section[id]');
+            let index = sections.length;
+            while(--index && window.scrollY + 120 < sections[index].offsetTop) {}
+            Array.from(navLinks.querySelectorAll('a')).forEach(link => link.classList.remove('active'));
+            const id = sections[index] ? sections[index].id : 'home';
+            const activeLink = navLinks.querySelector('a[href="#' + id + '"]');
+            if(activeLink) activeLink.classList.add('active');
+        }
+
+        // Animate skill bars when in view
+        function animateSkillBars() {
+            const bars = document.querySelectorAll('.skill-level');
+            bars.forEach(bar => {
+                const level = bar.getAttribute('data-level') || 0;
+                // animate with slight delay
+                setTimeout(() => { bar.style.width = level + '%'; }, 200);
+            });
+        }
+
+        // Simple contact form handling (client-side only)
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const status = document.getElementById('formStatus');
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            if(!name || !email || !message) {
+                status.style.display = 'block';
+                status.style.color = '#ffc107';
+                status.textContent = 'Please fill required fields.';
+                return false;
+            }
+            // Simulate send
+            status.style.display = 'block';
+            status.style.color = '#28a745';
+            status.textContent = 'Sending message...';
+            setTimeout(() => {
+                status.style.color = '#28a745';
+                status.textContent = 'Message sent! I will reply soon. Thank you.';
+                document.getElementById('contactForm').reset();
+            }, 900);
+            return false;
+        }
+
+        // Keyboard accessibility for mobile menu toggle
+        mobileBtn.addEventListener('keydown', (e) => {
+            if(e.key === 'Enter' || e.key === ' ') mobileBtn.click();
+        });
+
+        // Smooth scroll enhancement for older browsers
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Initial active nav setter
+        document.addEventListener('DOMContentLoaded', setActiveNav);
+    </script>
+</body>
+</html>
