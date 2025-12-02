@@ -1,67 +1,66 @@
-# Web Hoster – Multi Webserver Hosting Using Docker
+Web Hoster – Multi Webserver Hosting Using Docker
 
-This repository demonstrates how to host two different web servers (Apache and Nginx) simultaneously using Docker and Docker Compose.  
+This repository demonstrates how to host two different web servers (Apache and Nginx) simultaneously using Docker and Docker Compose.<br>
 It is designed for students, DevOps beginners, and anyone who wants to learn container-based hosting in a simple and practical way.
 
----
-
 # 1. Project Structure
-
 web_Hoster/
 │
 ├── apache/
-│ └── index.html → Website page served by Apache
+│   └── index.html → Website page served by Apache
 │
 ├── nginx/
-│ └── index.html → Website page served by Nginx
+│   └── index.html → Website page served by Nginx
 │
 └── docker-compose.yml → Main configuration file
 
-
----
-
 # 2. Purpose of This Project
 
-Running multiple web servers on the same machine normally causes conflicts because both try to use the same ports.  
+Running multiple web servers on the same machine normally causes conflicts because both try to use the same ports.<br>
 Docker solves this by running each server inside its own isolated container.
 
-This project helps you understand:
+This project helps you understand:<br>
 
-- How containers isolate applications  
-- How multiple servers can run simultaneously  
-- How Docker Compose manages multiple services  
-- How to host simple websites using Docker  
+How containers isolate applications<br>
 
----
+How multiple servers can run simultaneously<br>
+
+How Docker Compose manages multiple services<br>
+
+How to host simple websites using Docker<br>
 
 # 3. Features
 
-- Two fully working web servers: **Apache** and **Nginx**  
-- Separate `index.html` for each server  
-- Clean Docker Compose setup  
-- Beginner-friendly configuration  
-- Runs on any OS that supports Docker  
-- Stop/start everything with one command  
+Two fully working web servers: Apache and Nginx<br>
 
----
+Separate index.html for each server<br>
 
-# 4. Description 
+Clean Docker Compose setup<br>
 
-This repository provides a containerized multi-webserver environment using Docker and Docker Compose.  
+Beginner-friendly configuration<br>
+
+Runs on any OS that supports Docker<br>
+
+Stop/start everything with one command<br>
+
+# 4. Description
+
+This repository provides a containerized multi-webserver environment using Docker and Docker Compose.<br>
 It demonstrates lightweight hosting of multiple static websites through Apache and Nginx, running in isolated containers on a single host system.
 
-The project is suitable for:
+The project is suitable for:<br>
 
-- DevOps practice  
-- Docker learning  
-- Multi-environment simulation  
-- Web hosting demonstrations  
-- Container networking basics  
+DevOps practice<br>
 
----
+Docker learning<br>
 
-# 5. docker-compose.yml 
+Multi-environment simulation<br>
 
+Web hosting demonstrations<br>
+
+Container networking basics<br>
+
+# 5. docker-compose.yml
 version: '3.8'
 
 services:
@@ -85,36 +84,40 @@ services:
 
 # 6. How to Run the Project
 
-Step 1: Install Docker
+Step 1: Install Docker<br>
 Make sure Docker and Docker Compose are installed on your system.
 
 Step 2: Clone the Project
+
 git clone https://github.com/The-Quiet-1/multi-webserver-docker
 cd web_Hoster
 
-Step 3: Start Both Web Servers
+
+Step 3: Start Both Web Servers<br>
+
 docker-compose up -d
 
-Step 4: Visit in Browser
+
+Step 4: Visit in Browser<br>
+
 Server	URL
 Nginx	http://localhost:8081
+
 Apache	http://localhost:8082
 
-Step 5: Stop Everything
+Step 5: Stop Everything<br>
+
 docker-compose down
 
 # 7. Full Commands List
 Docker Commands
-powershell
-Copy code
 docker ps
 docker stop container_name
 docker start container_name
 docker logs container_name
 docker exec -it container_name bash
+
 Docker Compose Commands
-powershell
-Copy code
 docker-compose up
 docker-compose up -d
 docker-compose down
@@ -123,10 +126,14 @@ docker-compose ps
 
 # 8. Future Improvements (Optional Enhancements)
 
-Add load balancer (Nginx reverse proxy)
-Enable HTTPS using Certbot
-Add a database container
-Add environment variables
-Add CI/CD pipeline (GitHub Actions)
-Add logging and monitoring (Prometheus + Grafana)
+Add load balancer (Nginx reverse proxy)<br>
 
+Enable HTTPS using Certbot<br>
+
+Add a database container<br>
+
+Add environment variables<br>
+
+Add CI/CD pipeline (GitHub Actions)<br>
+
+Add logging and monitoring (Prometheus + Grafana)<br>
