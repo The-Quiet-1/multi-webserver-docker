@@ -1,18 +1,18 @@
-Web Hoster – Multi Webserver Hosting Using Docker
+# Web Hoster – Multi Webserver Hosting Using Docker
 
 This repository demonstrates how to host two different web servers (Apache and Nginx) simultaneously using Docker and Docker Compose.<br>
 It is designed for students, DevOps beginners, and anyone who wants to learn container-based hosting in a simple and practical way.
 
 # 1. Project Structure
-web_Hoster/
-│
-├── apache/
-│   └── index.html → Website page served by Apache
-│
-├── nginx/
-│   └── index.html → Website page served by Nginx
-│
-└── docker-compose.yml → Main configuration file
+web_Hoster/<br>
+│<br>
+├── apache/<br>
+│   └── index.html → Website page served by Apache<br>
+│<br>
+├── nginx/<br>
+│   └── index.html → Website page served by Nginx<br>
+│<br>
+└── docker-compose.yml → Main configuration file<br>
 
 # 2. Purpose of This Project
 
